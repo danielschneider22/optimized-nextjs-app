@@ -4,18 +4,38 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   lighthouse-ci:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository code
       - uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js (specify version if needed)
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '16' # Adjust to match your project needs
+
+      # Step 3: Install project dependencies
       - run: npm install
-      - run: npm run build && npm start &
+
+      # Step 4: Install Lighthouse CI (LHCI) globally
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli
+
+      # Step 5: Build the project
+      - run: npm run build
+
+      # Step 6: Start the Next.js server (run in the background)
+      - run: npm start &
+        continue-on-error: true # This ensures the server continues running for the Lighthouse audit
+
+      # Step 7: Run Lighthouse CI audits
       - name: Run Lighthouse CI
         run: lhci autorun
