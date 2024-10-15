@@ -41,4 +41,9 @@ Playground for standardized ideal approach to NextJS application
 
 # Automated Lighthouse reports
 
-Use lighthouse CI by running lhci autorun
+Use lighthouse CI by running
+lhci autorun
+
+# Run pretteir across application
+
+npx eslint . --fix
