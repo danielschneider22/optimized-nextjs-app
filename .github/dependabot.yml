@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: 'yarn'
+    directory: '/'
+    schedule:
+      interval: 'daily' # Check for updates daily
+    ignore:
+      - dependency-name: 'react'
+      - dependency-name: 'typescript'
+
+  - package-ecosystem: 'github-actions' # Scan GitHub actions for security issues
+    directory: '/'
+    schedule:
+      interval: 'weekly'

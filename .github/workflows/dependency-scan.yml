@@ -1,0 +1,19 @@
+name: 'Dependency Scan'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: yarn install
+      - name: Audit Dependencies for Vulnerabilities
+        run: yarn audit
