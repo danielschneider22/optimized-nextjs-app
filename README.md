@@ -38,3 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # optimized-nextjs-app
 
 Playground for standardized ideal approach to NextJS application
+
+# Automated Lighthouse reports
+
+Use lighthouse CI by running lhci autorun
