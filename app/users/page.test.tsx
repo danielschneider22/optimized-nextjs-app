@@ -4,9 +4,6 @@ import Page from './page';
 
 jest.mock('next/navigation', () => {
   return {
-    useSearchParams: () => ({
-      get: () => {},
-    }),
     useRouter: jest.fn(),
   };
 });

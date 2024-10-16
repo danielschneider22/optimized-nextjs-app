@@ -13,6 +13,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { userData } from './userData';
+import { useTheme } from 'next-themes';
+import { Button } from '@/components/ui/button';
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_TOTAL_ITEMS = 7;
@@ -34,6 +36,8 @@ export default function Users() {
 
   const isPending = false;
 
+  const { theme, setTheme } = useTheme();
+
   return (
     <div className="m-10 flex flex-col gap-5">
       <div className="flex justify-between gap-3 w-full">
@@ -44,6 +48,14 @@ export default function Users() {
             onChange={(e) => setCurrentSearch(e.target.value)}
           />
         </div>
+        <Button
+          onClick={() =>
+            theme === 'dark' ? setTheme('light') : setTheme('dark')
+          }
+          variant={'secondary'}
+        >
+          Change Theme
+        </Button>
 
         <Select
           onValueChange={(value: string) => setTotalItems(parseInt(value))}
