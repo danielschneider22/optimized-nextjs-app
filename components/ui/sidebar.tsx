@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React from "react";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import React from 'react';
+import { usePathname } from 'next/navigation';
 
 import {
   Bell,
@@ -12,40 +12,40 @@ import {
   Package2,
   ShoppingCart,
   Users,
-} from "lucide-react";
-import { Button } from "./button";
+} from 'lucide-react';
+import { Button } from './button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
 export const navItems = [
   {
-    label: "Dashboard",
-    href: "/admin",
+    label: 'Dashboard',
+    href: '/admin',
     icon: <Home className="h-4 w-4" />,
   },
   {
-    label: "Orders",
-    href: "/admin/orders",
+    label: 'Orders',
+    href: '/admin/orders',
     icon: <ShoppingCart className="h-4 w-4" />,
   },
   {
-    label: "Products",
-    href: "/admin/products",
+    label: 'Products',
+    href: '/admin/products',
     icon: <Package className="h-4 w-4" />,
   },
   {
-    label: "Users",
-    href: "/admin/users",
+    label: 'Users',
+    href: '/admin/users',
     icon: <Users className="h-4 w-4" />,
   },
   {
-    label: "Analytics",
-    href: "/admin/analytics",
+    label: 'Analytics',
+    href: '/admin/analytics',
     icon: <LineChart className="h-4 w-4" />,
   },
 ];
@@ -73,7 +73,7 @@ export default function Sidebar() {
                 key={navItem.label}
                 href={navItem.href}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
-                  pathname === navItem.href ? "bg-muted text-primary" : ""
+                  pathname === navItem.href ? 'bg-muted text-primary' : ''
                 }`}
               >
                 {navItem.icon}

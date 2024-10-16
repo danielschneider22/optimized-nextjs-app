@@ -1,29 +1,23 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import UsersTable from './users-table';
+import { userData } from '@/app/users/userData';
 
-const mockUsers = [
-  {
-    id: '1',
-    email: 'warrior@orcdev.com',
-    username: 'Warrior',
-    createdAt: '2023-01-01',
-  },
-  {
-    id: '2',
-    email: 'wizard@orcdev.com',
-    username: 'Wizard',
-    createdAt: '2023-01-02',
-  },
-];
+function createMockUsers(page: number, totalItems: number) {
+  return userData.slice((page - 1) * totalItems, page * totalItems);
+}
 
 it('UsersTable renders', () => {
+  const currentPage = 1;
+  const totalPages = 7;
+  const mockUsers = createMockUsers(currentPage, totalPages);
+
   render(
     <UsersTable
       users={mockUsers}
       isLoading={false}
-      totalPages={2}
-      currentPage={1}
+      totalPages={totalPages}
+      currentPage={currentPage}
       onPageChange={() => {}}
     />
   );
@@ -31,12 +25,16 @@ it('UsersTable renders', () => {
 
 describe('UsersTable', () => {
   beforeEach(() => {
+    const currentPage = 1;
+    const totalPages = 7;
+    const mockUsers = createMockUsers(currentPage, totalPages);
+
     render(
       <UsersTable
         users={mockUsers}
         isLoading={false}
-        totalPages={2}
-        currentPage={1}
+        totalPages={totalPages}
+        currentPage={currentPage}
         onPageChange={() => {}}
       />
     );
@@ -54,4 +52,32 @@ describe('UsersTable', () => {
     expect(screen.getByText('Username')).toBeInTheDocument();
     expect(screen.getByText('Date')).toBeInTheDocument();
   });
+
+  it('renders user rows', () => {
+    expect(screen.getByText('user1@gmail.com')).toBeInTheDocument();
+    expect(screen.getByText('user7@gmail.com')).toBeInTheDocument();
+    expect(screen.queryByText('user8@gmail.com')).not.toBeInTheDocument();
+    expect(screen.queryByText('user0@gmail.com')).not.toBeInTheDocument();
+  });
+});
+
+it('renders third page rows', () => {
+  const currentPage = 3;
+  const totalPages = 10;
+  const mockUsers = createMockUsers(currentPage, totalPages);
+
+  render(
+    <UsersTable
+      users={mockUsers}
+      isLoading={false}
+      totalPages={totalPages}
+      currentPage={currentPage}
+      onPageChange={() => {}}
+    />
+  );
+  expect(screen.getByText('user21@gmail.com')).toBeInTheDocument();
+  expect(screen.getByText('user30@gmail.com')).toBeInTheDocument();
+  expect(screen.queryByText('user1@gmail.com')).not.toBeInTheDocument();
+  expect(screen.queryByText('user20@gmail.com')).not.toBeInTheDocument();
+  expect(screen.queryByText('user31@gmail.com')).not.toBeInTheDocument();
 });

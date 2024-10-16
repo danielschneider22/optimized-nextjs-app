@@ -14,7 +14,6 @@ import {
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
 } from '@/components/ui/pagination';
 import { Button } from '@/components/ui/button';

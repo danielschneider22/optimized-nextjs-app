@@ -3,8 +3,6 @@
 import React from 'react';
 import { parseAsInteger, useQueryState } from 'nuqs';
 
-import { useSearchParams } from 'next/navigation';
-
 import { UsersTable } from '@/components/features';
 import { Input } from '@/components/ui/input';
 import {
@@ -20,8 +18,6 @@ const DEFAULT_PAGE = 1;
 const DEFAULT_TOTAL_ITEMS = 7;
 
 export default function Users() {
-  const searchParams = useSearchParams();
-
   const [currentSearch, setCurrentSearch] = useQueryState('search', {
     defaultValue: '',
   });
@@ -33,8 +29,6 @@ export default function Users() {
     'totalItems',
     parseAsInteger.withDefault(DEFAULT_TOTAL_ITEMS)
   );
-
-  const search = searchParams.get('search');
 
   const data = userData.slice((page - 1) * totalItems, page * totalItems);
 
