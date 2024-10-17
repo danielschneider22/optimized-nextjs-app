@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - master
+  push: # Run tests on push to main
+    branches:
+      - master
 
 jobs:
   test:
