@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  test:
+  jest-test:
     runs-on: ubuntu-latest
 
     steps:
