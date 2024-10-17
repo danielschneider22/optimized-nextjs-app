@@ -14,13 +14,13 @@ jobs:
 
     steps:
       # Step 1: Checkout the repository code
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # Step 2: Set up Node.js (specify version if needed)
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '18' # Adjust to match your project needs
+          node-version: '20' # Adjust to match your project needs
 
       # Step 3: Install project dependencies
       - run: npm install
