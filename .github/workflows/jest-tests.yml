@@ -3,7 +3,7 @@ name: Jest Test Suite
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   test:
