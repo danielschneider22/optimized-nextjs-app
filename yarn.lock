@@ -4814,10 +4814,10 @@ npm-run-path@^4.0.1:
   dependencies:
     path-key "^3.0.0"
 
-nuqs@^1.20.0:
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/nuqs/-/nuqs-1.20.0.tgz#6db62ad1276d911015248e208dc770e26275cc62"
-  integrity sha512-nGVfv7eWMNxAzOJ9n8ARTo6ObqeEr1ETYZ+dIMCg/VfGUoZoPrqyTOndIvQIgUzK3pIC41mTXg10JJxh9ziEhw==
+nuqs@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/nuqs/-/nuqs-2.0.4.tgz#a01090f2aebbf805b1f5c9bc1f0af2b5ed1ced8a"
+  integrity sha512-d0GQCOHW9o04slcTe9nfTgskCT/09K5pOMXu671Y8p7d/48KEKJLzZjklWXIt3pFjYaplErMZpXiLiYo0w8uQQ==
   dependencies:
     mitt "^3.0.1"
 
